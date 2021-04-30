@@ -8,8 +8,9 @@ function grabJoke(){
             //'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
-    })
-    console.log(jokeRequest)
+    }).then(res => res.json())
+        .then(obj => jokeBody.innerHTML = obj.joke)
+    
 }
 
 
