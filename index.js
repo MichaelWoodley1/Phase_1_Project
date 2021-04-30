@@ -1,4 +1,6 @@
 const button = document.getElementById("myBtn");
+const jokeBody = document.getElementById("p");
+document.addEventListener('DOMContentLoaded', grabJoke);
 
 button.addEventListener("click", grabJoke);
 
