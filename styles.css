@@ -21,6 +21,10 @@ body{
     border-radius: 30px;
 }
 
+#joke{
+    text-align: center;
+}
+
 h2{
     text-align: center;
     }
