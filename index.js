@@ -12,7 +12,10 @@ function grabJoke(){
         }
     }).then(res => res.json())
         .then(obj => jokeBody.innerHTML = obj.joke)
-    
+    .catch(function(error){
+        alert("Error");
+        console.log(error.message);
+    })
 }
 
 
