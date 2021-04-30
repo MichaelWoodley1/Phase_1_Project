@@ -13,7 +13,7 @@ body{
 #container{
     width: 500px;
     max-width: 500px;
-    height: 150px;
+    height: 250px;
     background: rgb(0, 195, 255);
     padding: 15px;
     display: flex;
@@ -28,4 +28,11 @@ body{
 h2{
     text-align: center;
     }
-
+#myBtn{
+   background: whitesmoke; 
+   color: rgb(0, 195, 255);
+   border: none;
+   padding: 5px 30px;
+   border-radius: 30px;
+   font-weight: bold;
+}
