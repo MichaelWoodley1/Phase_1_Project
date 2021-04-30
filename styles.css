@@ -5,3 +5,19 @@ body{
     align-items:center;
     justify-content: center;
 }
+
+#container{
+    width: 500px;
+    max-width: 500px;
+    height: 150px;
+    background: rgb(0, 195, 255);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+}
+
+h2{
+    text-align: center;
+    }
+
