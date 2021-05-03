@@ -1,32 +1,36 @@
-const button = document.getElementById("myBtn");
-const jokeBody = document.getElementById("p");
-document.addEventListener('DOMContentLoaded', grabJoke);
+const jokeLikes = {};
+let currentJokeId = "";
+const laughButton = document.getElementById("laughButton");
 
-button.addEventListener("click", grabJoke);
+const grabJoke = () => {
+  fetch('https://icanhazdadjoke.com/', {
+    headers: {
+      //'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then((obj) => {
+      currentJokeId = obj.id;
 
-function grabJoke(){
-    const jokeRequest = fetch('https://icanhazdadjoke.com/', {
-        headers: {
-            //'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    }).then(res => res.json())
-        .then(obj => jokeBody.innerHTML = obj.joke)
-    .catch(function(error){
-        alert("Error");
-        console.log(error.message);
+      document.getElementById("jokeContainer").innerHTML = obj.joke;
+      document.getElementById("jokeLikeCounter").innerHTML = `<br/>Number of likes: ${jokeLikes[currentJokeId] | 0}`;
     })
+    .catch((error) => {
+      alert("Error");
+      console.log(error.message);
+    })
+};
+
+const likeJoke = (event) => {
+  jokeLikes[currentJokeId] = jokeLikes[currentJokeId] ? (jokeLikes[currentJokeId] + 1) : 1;
+  document.getElementById("jokeLikeCounter").innerHTML = `<br/>Number of likes: ${jokeLikes[currentJokeId] | 0}`;
 }
 
-
-
-
-
-
-
-
-
-
+document.addEventListener('DOMContentLoaded', grabJoke);
+const button = document.getElementById("likeButton");
+button.addEventListener("click", likeJoke);
+laughButton.addEventListener("click", grabJoke);
 
 // Access to fetch at 'https://icanhazdadjoke.com/' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy:
 // Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response.
